@@ -42,5 +42,18 @@ export const theme = createTheme({
         },
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+          cursor: "pointer",
+          fontWeight: "bold",
+          color: "#969696",
+          "&:hover": {
+            color: "#FCB808",
+          },
+        },
+      },
+    },
   },
 });

@@ -1,7 +1,19 @@
-import { Avatar, Box, Button, Grid, Stack } from "@mui/material";
+import { Avatar, Box, Button, Grid, Link, Stack } from "@mui/material";
 import logo from "../../assets/logo.svg";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const ROUTES = ["Home", "Explore", "Pages", "Community", "Contact"];
 
 export default function TopNav() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentRoute = location.pathname.split("/")[1];
+  console.log("currentRoute", currentRoute);
+
+  const handleRoute = (route) => {
+    navigate(route);
+  };
+
   return (
     <Box sx={{ width: "100%" }}>
       <Grid
@@ -24,11 +36,23 @@ export default function TopNav() {
             justifyContent="space-evenly"
             alignItems="center"
           >
-            <div>Home</div>
-            <div>Explore</div>
-            <div>Pages</div>
-            <div>Community</div>
-            <div>Contact</div>
+            {ROUTES.map((route) => (
+              <Link
+                key={route}
+                disableElevation
+                disableRipple
+                onClick={handleRoute.bind(null, route.toLowerCase())}
+                sx={{
+                  color:
+                    currentRoute === route.toLowerCase() ||
+                    (currentRoute === "" && route === "Home")
+                      ? "#FCB808"
+                      : "#969696",
+                }}
+              >
+                {route}
+              </Link>
+            ))}
             <Button
               variant="contained"
               color="primary"
