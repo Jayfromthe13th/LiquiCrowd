@@ -9,6 +9,10 @@ export const theme = createTheme({
     secondary: {
       main: green[500],
     },
+    // Define a 'background' palette if you want to use it elsewhere
+    background: {
+      default: "#000000", // Set this to the black color you want for the background
+    },
   },
   typography: {
     fontFamily: "Sora, sans-serif",
@@ -37,9 +41,12 @@ export const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: "#111111",
+          backgroundColor: "#000000", // Set the background color for the body element to black
+          color: "white", // Set the default text color to white if desired
         },
-        html: {},
+        html: {
+          backgroundColor: "#000000", // Ensures the background color is consistent
+        },
       },
     },
     MuiButton: {
@@ -56,7 +63,6 @@ export const theme = createTheme({
         outlinedPrimary: {
           color: "#FFFFFF",
           background: "transparent",
-          // border: "1px solid #424242",
           borderWidth: "1px",
           borderColor: "#424242",
         },
@@ -75,5 +81,6 @@ export const theme = createTheme({
         },
       },
     },
+    // ... (rest of your component overrides)
   },
 });
